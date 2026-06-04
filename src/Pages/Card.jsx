@@ -19,9 +19,6 @@ const Card = ({url, nombre, noPokemon, pokemon}) => {
         obtenerImagen()
     },[])
 
-
-
-
   return (
     <li
     onClick={()=>{setPokemonSeleccionado(pokemon)}}

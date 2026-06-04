@@ -1,10 +1,8 @@
 import { useState } from "react"; 
 import Header from "./components/Header";
 import ListaPokemons from './Pages/ListaPokemons';
-import InfoPokemon from './Pages/infoPokemon';
-
-
 import { PageContext } from './components/Context/pageContext.jsx';
+import { InfoPokemon } from "./Pages/infoPokemon.jsx";
 
 const App = () => {
 

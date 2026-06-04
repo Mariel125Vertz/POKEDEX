@@ -1,14 +1,14 @@
 import { use, useEffect, useState } from "react"
 import Card from "./Card";
 import { ListPlus, ScanSearch } from "lucide-react";
-// se ejecuta javascript
+
 
 const ListaPokemons = ({}) => {
    
     const URL = "https://pokeapi.co/api/v2/pokemon/"
     const [pokemons, setPokemons] = useState([]);
     const [next,setNext] = useState(null);
-    const [busqueda, setBusqueda] = useState("") //
+    const [busqueda, setBusqueda] = useState("") 
 
     const obtenerPokemons = async (url) => {
         try {
@@ -17,16 +17,12 @@ const ListaPokemons = ({}) => {
             setPokemons([...pokemons, ...datosPokemon.results]);
             setNext(datosPokemon.next);
            
-            
         } catch (error) {
             console.error(error);
             
         }
     }
-    useEffect(()=>{
-        console.log(pokemons);
-
-    },[pokemons]);
+   
 
     useEffect(()=>{
         obtenerPokemons(URL);
@@ -36,7 +32,6 @@ const ListaPokemons = ({}) => {
     const pokemonsFiltrados = pokemons.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(busqueda.toLowerCase())
     )
-
   return (
     <section>
         <div className="flex justify-center mb-10">
@@ -53,12 +48,12 @@ const ListaPokemons = ({}) => {
         </div>
         <ul className="flex flex-wrap w-full justify-center gap-2">
             {
-            pokemonsFiltrados.map((pokemon,indice)=>(//
+            pokemonsFiltrados.map((pokemon,indice)=>(
                 <Card 
-                key={pokemon.name}//
+                key={pokemon.name}
                 url={pokemon.url}
                 nombre={pokemon.name}
-                noPokemon={pokemon.url.split("/").filter(Boolean).pop()}//
+                noPokemon={pokemon.url.split("/").filter(Boolean).pop()}
                 pokemon = {pokemon}
                 />
             ))
@@ -69,11 +64,8 @@ const ListaPokemons = ({}) => {
                 next &&
                 <button onClick = {()=> obtenerPokemons(next)}
                 className="flex gap-1 bg-red-900 text-white px-2 py-1 rounded shadow cursor-pointer">
-                <ListPlus />Mostrar mas</button>
-            }
+                <ListPlus />Mostrar mas</button>  }
         </div>
-        
     </section>
-  )
-}
+  )}
 export default ListaPokemons
